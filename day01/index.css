@@ -1,0 +1,86 @@
+/*容器计算宽度设置*/
+* {
+    box-sizing: border-box;
+}
+
+
+/*
+学到的点：
+1.   height: 100vh; 导致出现了滚动条 不知道为什么？  使用了overflow：hidden；去除了滚动条；
+        根本原因是因为，body的margin和padding 取消掉就好了 没必要使用 overflow
+2. 设置垂直居中没有，在屏幕正中间要设置高度是视口100vh
+
+*/
+body{
+    font-family: 'Muli',sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /*overflow: hidden;*/
+    margin: 0;
+    padding: 0;
+}
+
+
+/*最外层*/
+.container{
+    display: flex;
+    width: 90vw;
+}
+
+
+
+
+.container .image{
+    height: 80vh;
+    background-size: cover  ;
+    background-position: center  ;
+    background-repeat: no-repeat;
+    border-radius: 50px;
+    margin: 10px;
+    color: #fff;
+    /*给一个默认大小*/
+    flex: 0.5;
+
+/*   鼠标形状 */
+    cursor:pointer;
+/*    父绝子相，为了h3*/
+    position: relative;
+
+/*    动画*/
+    transition: all 0.7s ease-in;
+
+}
+
+.image h3{
+    display: block;
+    position: absolute;
+    font-size: 24px;
+    left: 20px;
+    bottom: 20px;
+    margin: 0;
+    font-weight: bold;
+    opacity: 0;
+}
+
+
+.container .image.active{
+    flex: 5;
+
+}
+.container .image.active h3{
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}
+
+
+
+
+.image:checked {
+
+}
+
+
+
