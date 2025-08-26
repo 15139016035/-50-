@@ -1,0 +1,120 @@
+
+/*定义变量*/
+:root {
+    --line-border-empty: #e0e0e0;
+    --line-border-fill: #3498db;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #f6f7fb;
+    font-family: 'Muli', sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container{
+    text-align: center;
+
+
+
+
+}
+
+.container .progress-container{
+    width: 350px;
+    /*这段代码是为了在类似手机上看的话，防止溢出；*/
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/*横线 ,伪元素*/
+.container .progress-container::before{
+    content: "";
+    background-color: var(--line-border-empty);
+    position: absolute;
+    left: 0; /*紧紧靠左开始*/
+    top: 50%;
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+
+}
+
+/*蓝色圆圈的起点*/
+.progress{
+    background-color: var(--line-border-fill);
+    position: absolute;
+    left: 0; /*靠左*/
+    height: 4px;
+    /*垂直居中：两种写法*/
+    /**
+    1. 第一种利用：绝对定位产生的垂直等式；
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+     */
+
+    /*2. 第二种：利用先对其父的中线，再移动自身一半*/
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    /*过渡效果*/
+    transition: width 0.4s ease;
+}
+
+
+.circle{
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--line-border-empty);
+    /*过渡效果*/
+    transition: border-color  0.4s ease;
+
+}
+
+
+.circle.active{
+    border-color: var(--line-border-fill);
+
+}
+
+.btn{
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:disabled{
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+}
+
+
+
